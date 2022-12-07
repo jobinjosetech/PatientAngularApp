@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 export class ViewPatientComponent {
   constructor(private api:ApiService){
       api.viewPatients().subscribe(
-        (response)=>{
+        (response:any)=>{
           console.log(response)
           this.patients = response;
         }
