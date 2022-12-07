@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-add-patient',
@@ -6,12 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent {
+  constructor(private api: ApiService, private route: Router) { }
   name = ""
   image = ""
   address = ""
   phone = ""
   dateofappointment = ""
-  doctorName = ""
+  doctorname = ""
   readValues = () => {
     let data: any = {
       "image": this.image,
@@ -19,8 +22,21 @@ export class AddPatientComponent {
       "address": this.address,
       "phone": this.phone,
       "dateofappointment": this.dateofappointment,
-      "doctorName": this.doctorName
+      "doctorname": this.doctorname
     }
+    this.api.addPatient(data).subscribe(
+      (response: any) => {
+
+      }
+    )
+    this.name = ""
+    this.image = ""
+    this.address = ""
+    this.phone = ""
+    this.dateofappointment = ""
+    this.doctorname = ""
+    console.log("Success")
+    this.route.navigate(["/"])
     console.log(data)
   }
 }
