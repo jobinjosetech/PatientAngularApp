@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-view-patient',
@@ -7,8 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ViewPatientComponent {
   constructor(private api:ApiService){
-      api.getPatients().subscribe(
+      api.viewPatients().subscribe(
         (response)=>{
+          console.log(response)
           this.patients = response;
         }
       )
