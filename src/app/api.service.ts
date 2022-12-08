@@ -13,4 +13,13 @@ export class ApiService {
   addPatient = (data:any)=>{
     return this.http.post("http://localhost:8080/add", data);
   }
+
+  searchData = (data:any) =>{
+    return this.http.post("http://localhost:8080/search",data)
+  }
+
+  deleteData = (data:any) =>{
+    console.log(data)
+    return this.http.post("http://localhost:8080/delete",data)
+  }
 }

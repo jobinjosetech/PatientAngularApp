@@ -26,7 +26,9 @@ export class AddPatientComponent {
     }
     this.api.addPatient(data).subscribe(
       (response: any) => {
-
+        if(response == "success"){
+          alert("Patient added successfully")
+        }
       }
     )
     this.name = ""
